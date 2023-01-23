@@ -1,8 +1,4 @@
-d = {'mom':1,'dad':2,'son':3}
-
-def modify_dict(d):
-    d = {'grandma':4,'grandpa':5}
-    return d
-
-modify_dict(d)
-print(d)
+x=3
+y=4
+z=5
+print(x if not x+y*z else y)

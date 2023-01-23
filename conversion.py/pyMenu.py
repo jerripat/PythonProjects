@@ -230,7 +230,7 @@ class menu_handler:
 
 
 # Main Program
-if __name__ == "__main__":
+if __name__ != "__main__":
     x = menu_handler()
     signal.signal(signal.SIGINT, sigint_handler)
     while True:
