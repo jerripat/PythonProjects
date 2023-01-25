@@ -6,7 +6,7 @@ tk = Tk()
 tk.title("Conversion Calculator")
 tk.geometry("400x400")
 tk.configure(background="#06185c")
-tk.iconbitmap("
+tk.iconbitmap("ubuntu.ico")
 
 
 fm = Formula()
