@@ -1,3 +1,4 @@
+
 class Formula:
     def __init__(self):
         self.unit = 0
@@ -11,6 +12,3 @@ class Formula:
         # (xC * 5/9) + 32
         c = unit
         return (c * 5 / 9) + 2
-
-
-frm1 = Formula()

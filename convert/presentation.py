@@ -1,27 +1,44 @@
 from ast import Expr
 from tkinter import *
-from formulas import Formula
+#from formulas import Formula
 
 tk = Tk()
 tk.title("Conversion Calculator")
 tk.geometry("400x400")
 tk.configure(background="#06185c")
-tk.iconbitmap("ubuntu.ico")
 
 
-fm = Formula()
+#fm = Formula()
 
+def FtoC(unit):
+        # F = (9/5 * C) + 32
+        f = unit
+        return (f - 32) * 5 / 9
 
-def new_frame():
-    hide_con_frame()
-    open_con_frame()
+def CtoF(unit):
+        # (xC * 5/9) + 32
+        c = unit
+        return (c * 5 / 9) + 32
 
-
-def callMenu():
-    num = e.get()
+def callFtoC(unit):
+    num = unit
     if num.isdigit():
 
-        convert = fm.FtoC(int(num))
+        convert = FtoC(int(num))
+        convert = f"{convert:.2f}"
+        display_label = Label(
+            tk, text=f"You entered : {convert}", bg="#06185c", fg="yellow"
+        )
+    else:
+        display_label = Label(
+            tk, text="Only numbers are allowed!", bg="#06185c", fg="yellow"
+        )
+
+
+def callCtoF(unit):
+    num = unit
+    if num.isdigit():
+        convert = CtoF(int(num))
         convert = f"{convert:.2f}"
         display_label = Label(
             tk, text=f"You entered : {convert}", bg="#06185c", fg="yellow"
@@ -37,61 +54,68 @@ def callMenu():
 def editMenu():
     pass
 
+def radio():
+    if radioVar.get() == 0:
+        callFtoC(e.get())
+    else:
+        callCtoF(e.get())
 
-def open_con_frame():
-    con_frame.pack(pady=25)
-    con_frame.focus_set()
-
-
-def hide_con_frame():
-    con_frame.pack_forget()
-
-
-my_menu = Menu(tk)
-tk.config(menu=my_menu)
-file_menu = Menu(my_menu)
-my_menu.add_cascade(label="File", menu=file_menu)
-file_menu.add_command(label="New", command=new_frame)
-file_menu.add_command(label="Exit", command=tk.quit)
-
-edit_menu = Menu(my_menu)
-my_menu.add_cascade(label="Edit", menu=edit_menu)
-edit_menu.add_command(label="Open Conversion Menu", command=open_con_frame)
-
-con_label = Label(
-    tk, text="Select 'New' from File", font=("Helvetica", 14), bg="#06185c", fg="yellow"
+e_label = Label(
+    tk,
+    text="Enter Temperature to Convert",
+    bg="#06185c",
+    fg="yellow",
+    font=("Helvetica", 16),
 ).pack(pady=10)
-con_frame = Frame(tk, width="300", height="250", bd=2, bg="#06185c", relief="groove")
-# con_frame.pack(pady=25)
-con_frame_label = Label(
-    con_frame, text="   Convert   ", font=("Helvetica", 14), bg="#06185c", fg="yellow"
-)
-con_frame_label.pack(pady=10)
 
-v = IntVar()
+e = Entry(tk, font=("Helvetica", 14))
+e.pack(pady=10)
+e.focus_set()
+
+e1_label = Label(
+    tk,
+    text="Select conversion",
+    bg="#06185c",
+    fg="yellow",
+    font=("Helvetica", 16),
+).pack(pady=10)
+
+radioVar = IntVar()
+
 rbutton1 = Radiobutton(
     tk,
+    selectcolor="#06185c",
     text=" Farenheigt to Centigrade ",
-    variable=v,
-    value=1,
+    variable=radioVar,
+    value=0,
     bg="#06185c",
     fg="yellow",
 ).pack(pady=2)
+
+print(f'radioVar = : {radioVar.get()}')
 rbutton2 = Radiobutton(
     tk,
     text=" Centigrade to Farenheigt ",
-    variable=v,
-    value=2,
+    variable=radioVar,
+    value=1,
     bg="#06185c",
     fg="yellow",
+    selectcolor="#06185c",
 ).pack(pady=4)
-e = Entry(con_frame, font=("Helvetica", 12))
-e.pack(pady=10)
-# e.focus_set()
-my_button = Button(
-    con_frame, text="Convert", font=("Helvetica", 12), fg="#120e8c", command=callMenu
-)
-my_button.pack(pady=15)
+
+radButton = Button(tk, text="Choose Temp Type", command=radio).pack(pady=10)
+
+my_menu = Menu(tk)
+tk.config(menu=my_menu)
+file_menu = Menu(my_menu, tearoff=0)
+my_menu.add_cascade(label="File", menu=file_menu)
+file_menu.add_command(label="New")
+file_menu.add_command(label="Exit", command=tk.quit)
+
+edit_menu = Menu(my_menu, tearoff=0)
+my_menu.add_cascade(label="Options")
+edit_menu.add_command(label="Temperature")
+menu_sub = Menu(edit_menu, tearoff=0, bg="green")
 
 
 tk.mainloop()
