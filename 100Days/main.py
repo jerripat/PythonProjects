@@ -19,19 +19,19 @@ def find_high_bid(bidding_record):
             winner = bidder
     print(f"The winner is {winner} with a bid of ${highest_bid}")
 
+
 while not bidding_finished:
     name = input("What is your name?:")
     price = int(input("What is your bid?: $"))
     bids[name] = price
     should_continue = input("Are there any more bidders? (y/n):")
     if should_continue == "n":
-        bidding_finished = False
+        bidding_finished = True
         find_high_bid(bids)
         clear()
     elif should_continue == "y":
-        find_high_bid(bidding_record)
-        exit()
-        
+        clear()
+
 
 
 
