@@ -1,10 +1,3 @@
-class Num:
-    def __init__(self,value):
-        self.value = value
-        
-    def __add__(self, other):
-        return self.value - other.value
-    
-x = Num(5)
-y = Num(10)
-print(x+y)
+my_list =list(range(1,7))
+for index, item in enumerate(my_list): my_list.pop(index)
+print(my_list)
