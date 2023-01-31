@@ -3,77 +3,54 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 
+from formulas import Formula
 
+mk = 0.0
 tk = Tk()
 tk.title("Conversion Calculator")
-tk.geometry("400x400")
+tk.geometry("450x400")
 tk.configure(background="#06185c")
 
-options = ['Temperature',
-            'Distance',
-            'Liquid',
-            'Measurement']
-
-
-
-def FtoC(unit):
-    # F = (9/5 * C) + 32
-    f = unit
-    result = (f - 32) * (9 / 5)
-    messagebox.showinfo(
-        "Conversion",
-        f"The converion from {f}{chr(176)} Farenhight to Centigrade is: {result:.2f}{chr(176)}",
-    )
-    # popup(result, f)
-    return result
-
-
-def CtoF(unit):
-    # (xC * 5/9) + 32
-    c = unit
-    result = (c * 9 / 5) + 32
-    messagebox.showinfo(
-        "Converting...",
-        f"The converion from {c}{chr(176)} Centigrade to Farenhight is: {result:.2f}{chr(176)}",
-    )
-    return result
+fm = Formula(mk)
 
 
 def radio():
     if radioVar.get() == 0:
-        callFtoC(e.get())
+        callItoM(e.get())
     else:
-        callCtoF(e.get())
+        callMtoI(e.get())
 
 
-def callFtoC(unit):
+def callItoM(mk):
     num = 0
-    num = unit
+    num = mk
+
     if num.isdigit():
-        convert = FtoC(int(num))
-        convert = f"{convert:.2f}"
+        convert = fm.ItoM(int(num))
+        convert = "convert = %.2f" % convert
         display_label = Label(
             tk,
-            text=f"The converion from {num}{chr(176)} Farenhight to Centigrade is: {convert}{chr(176)}",
+            text=f"The conversion from {num} inch(s) to {convert} millimeters",
             bg="#06185c",
             fg="yellow",
         )
-    else:
-        display_label = Label(
-            tk, text="Only numbers are allowed!", bg="#06185c", fg="yellow"
-        )
+
+    messagebox.showinfo("Conversion",
+        f"The conversion from {num} inch(s) to {convert} milimeters"
+    )
+
     display_label.pack(pady=10)
 
 
-def callCtoF(unit):
+def callMtoI(mk):
     num = 0
-    num = unit
+    num = mk
     if num.isdigit():
-        convert = CtoF(int(num))
-        convert = f"{convert:.2f}"
+        convert = fm.MtoI(int(num))
+        convert = "convert = %.2f" % convert
         display_label = Label(
             tk,
-            text=f"The converion from {num}{chr(176)} Centigrade to Farenhight is: {convert}{chr(176)}",
+            text=f"The conversion from {num} milimeter(s) {convert} inch(s)",
             bg="#06185c",
             fg="yellow",
         )
@@ -81,6 +58,9 @@ def callCtoF(unit):
         display_label = Label(
             tk, text="Only numbers are allowed!", bg="#06185c", fg="yellow"
         )
+    messagebox.showinfo("Conversion",
+            f"The conversion from {num} milimeter(s) to {convert} inch(s)"
+    )
 
     display_label.pack(pady=10)
 
@@ -93,16 +73,13 @@ e1_label = Label(
     font=("Helvetica", 16),
 ).pack(pady=10)
 
-my_combo = ttk.Combobox(tk, value=options, state="readonly")
-my_combo.current(0)
-my_combo.pack(pady=10)
 
 radioVar = IntVar()
 
 rbutton1 = Radiobutton(
     tk,
     selectcolor="#06185c",
-    text=" Farenheigt to Centigrade ",
+    text=" Inch(s) to Milimeter(s) ",
     variable=radioVar,
     value=0,
     bg="#06185c",
@@ -111,7 +88,7 @@ rbutton1 = Radiobutton(
 
 rbutton2 = Radiobutton(
     tk,
-    text=" Centigrade to Farenheigt ",
+    text=" milimeter(s) to inch(s) ",
     variable=radioVar,
     value=1,
     bg="#06185c",
@@ -123,6 +100,7 @@ e = Entry(tk, text="Select Converion Type", font=("Helvetica", 14))
 e.pack(pady=10)
 e.focus_set()
 
+temp = e.get()
 
 radButton = Button(tk, text="Convert", command=radio).pack(pady=10)
 
