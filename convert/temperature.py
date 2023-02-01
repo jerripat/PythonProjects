@@ -27,18 +27,19 @@ def callFtoC(temp):
 
     if num.isdigit():
         convert = fm.FtoC(int(num))
-        convert = "convert = %.2f" % convert
+        convert = " %.2f" % convert
         display_label = Label(
             tk,
-            text=f"The converion from {num}{chr(176)} Farenhight to Centigrade is: {convert}{chr(176)}",
+            text=f"The converion from {num}{chr(176)} Farenhight is : {convert}{chr(176)} Centigrade",
             bg="#06185c",
             fg="yellow",
         )
-
-        return messagebox.showinfo(
-            "Conversion",
-            f"The converion from {num}{chr(176)} Farenhight to Centigrade is: {convert}{chr(176)}",
-        )
+    else:
+        messagebox.showerror("Error", "Please enter a valid number")
+    messagebox.showinfo(
+        "Conversion",
+        f"The converion from {num}{chr(176)} Farenhight is: {convert}{chr(176)} Centigrade",
+    )
 
     display_label.pack(pady=10)
 
@@ -48,21 +49,20 @@ def callCtoF(temp):
     num = temp
     if num.isdigit():
         convert = fm.CtoF(int(num))
-        convert = "convert = %.2f" % convert
+        convert = "%.2f" % convert
         display_label = Label(
             tk,
-            text=f"The converion from {num}{chr(176)} Centigrade to Farenhight is: {convert}{chr(176)}",
+            text=f"The converion from {num}{chr(176)} Centigrade is {convert}{chr(176)} Farenhight",
             bg="#06185c",
             fg="yellow",
         )
     else:
-        display_label = Label(
-            tk, text="Only numbers are allowed!", bg="#06185c", fg="yellow"
-        )
-        return messagebox.showinfo(
-            "Conversion",
-            f"The converion from {temp}{chr(176)} Centigrade to Farenhight is: {convert}{chr(176)}",
-        )
+        messagebox.showerror("Error", "Please enter a valid number")ca
+        
+    messagebox.showinfo(
+        "Conversion",
+        f"The converion from {temp}{chr(176)} Centigrade is {convert}{chr(176)} Farenhight",
+    )
 
     display_label.pack(pady=10)
 

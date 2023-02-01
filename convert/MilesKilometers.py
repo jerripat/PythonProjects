@@ -27,13 +27,15 @@ def callMtoK(mk):
 
     if num.isdigit():
         convert = fm.KmToMi(int(num))
-        convert = "convert = %.2f" % convert
+        convert = '%.2f' % convert
         display_label = Label(
             tk,
             text=f"The converion from {num} mile(s) to {convert} Kilometers",
             bg="#06185c",
             fg="yellow",
         )
+    else:
+        messagebox.showerror("Error", "Please enter a valid number")
 
     messagebox.showinfo("Conversion",
         f"The converion from {num} mile(s) to {convert} Kilometers"
@@ -47,7 +49,7 @@ def callKtoM(mk):
     num = mk
     if num.isdigit():
         convert = fm.KmToMi(int(num))
-        convert = "convert = %.2f" % convert
+        convert = "%.2f" % convert
         display_label = Label(
             tk,
             text=f"The converion from {num} Kilometer(s) {convert} Mile(s)",
@@ -55,9 +57,8 @@ def callKtoM(mk):
             fg="yellow",
         )
     else:
-        display_label = Label(
-            tk, text="Only numbers are allowed!", bg="#06185c", fg="yellow"
-        )
+        messagebox.showerror("Error", "Please enter a valid number")
+
     messagebox.showinfo("Conversion",
             f"The converion from {num} Kilometer(s) to {convert} Mile(s)"
     )

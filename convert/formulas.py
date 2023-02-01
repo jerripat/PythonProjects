@@ -31,8 +31,8 @@ class Formula:
 
     def CentToInch(self, mk):
         # 1 cent = 0.39 inch
-        return mk * 0.39
+        return float(mk) * 0.39
 
     def InchToCent(self, mk):
         # 1 inch = 2.54 centimeters
-        return mk * 2.54
+        return float(mk) * 2.54

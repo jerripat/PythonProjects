@@ -2,8 +2,8 @@ from ast import Expr
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-
 from formulas import Formula
+
 
 mk = 0.0
 tk = Tk()
@@ -16,35 +16,36 @@ fm = Formula(mk)
 
 def radio():
     if radioVar.get() == 0:
-        callItoM(e.get())
+        callInchToCent(e.get())
     else:
-        callMtoI(e.get())
+        callCentToInch(e.get())
 
 
-def callItoM(mk):
+def callInchToCent(mk):
     num = 0
     num = mk
 
     if num.isdigit():
-        convert = fm.ItoM(int(num))
+
+        convert = fm.InchToCent(mk)
         convert = "%.2f" % convert
         display_label = Label(
             tk,
-            text=f"The conversion from {num} inch(s) to {convert} millimeters",
+            text=f"The conversion from {num} inch(s) is {convert} centimeter(s)",
             bg="#06185c",
             fg="yellow",
         )
     else:
         messagebox.showerror("Error", "Please enter a valid number")
 
-    messagebox.showinfo("Conversion",
-        f"The conversion from {num} inch(s) to {convert} milimeters"
+    messagebox.showinfo(
+        "Conversion", f"The conversion from {num} inch(s) to {convert} centimeters"
     )
 
     display_label.pack(pady=10)
 
 
-def callMtoI(mk):
+def callCentToInch(mk):
     num = 0
     num = mk
     if num.isdigit():
@@ -52,15 +53,15 @@ def callMtoI(mk):
         convert = "%.2f" % convert
         display_label = Label(
             tk,
-            text=f"The conversion from {num} milimeter(s) {convert} inch(s)",
+            text=f"The conversion from {num} centimeter(s) to {convert} inch(s)",
             bg="#06185c",
             fg="yellow",
         )
     else:
         messagebox.showerror("Error", "Please enter a valid number")
-
-    messagebox.showinfo("Conversion",
-            f"The conversion from {num} milimeter(s) to {convert} inch(s)"
+        
+    messagebox.showinfo(
+        "Conversion", f"The conversion from {num} centimeter(s) to {convert} inch(s)"
     )
 
     display_label.pack(pady=10)
@@ -80,7 +81,7 @@ radioVar = IntVar()
 rbutton1 = Radiobutton(
     tk,
     selectcolor="#06185c",
-    text=" Inch(s) to Milimeter(s) ",
+    text=" Inch(s) to Centimeter(s)  ",
     variable=radioVar,
     value=0,
     bg="#06185c",
@@ -89,7 +90,7 @@ rbutton1 = Radiobutton(
 
 rbutton2 = Radiobutton(
     tk,
-    text=" milimeter(s) to inch(s) ",
+    text=" Centimeters(s) to inch(s) ",
     variable=radioVar,
     value=1,
     bg="#06185c",
