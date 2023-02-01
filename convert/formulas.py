@@ -36,3 +36,11 @@ class Formula:
     def InchToCent(self, mk):
         # 1 inch = 2.54 centimeters
         return float(mk) * 2.54
+
+    def FtToMt(self, mk):
+        # 1 foot = 0.3048
+        return mk * 0.3048
+
+    def MtToFt(self, mk):
+        # 1 meter = 3.28083
+        return mk * 3.28083
