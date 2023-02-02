@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from ast import Expr
 from tkinter import *
 from tkinter import messagebox
