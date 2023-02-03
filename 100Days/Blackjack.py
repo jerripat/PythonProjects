@@ -1,8 +1,11 @@
 import random
+from tkinter import *
 from tkinter import messagebox
 from replit import clear
+from PIL import Image, ImageTk
 
-
+tk = Tk()
+result = ''
 def deal_card():
     """Returns a random card from the deck"""
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -32,11 +35,33 @@ def compare(u_score, c_score):
     else:
         return "You Lose!"
 
+def play_game():
+    user_cards = []
+    computer_cards = []
+    is_game_over = False
 
-# sourcery skip: merge-list-append, move-assign-in-block
-user_cards = []
-computer_cards = []
-is_game_over = False
+img = ImageTk.PhotoImage(Image.open("Poker-icon.png"))
+img_label = Label(tk, image=img)
+img_label.pack()
+
+
+result =input("Would you like to play a game? (y/n): ")
+if result == "y":
+    play_game()
+    user_cards = []
+    computer_cards = []
+    is_game_over = False
+
+def replay_game():
+    if result == "y":
+        ans = input('Play another game?')
+        clear()
+        if ans == "y":
+            play_game()
+    else:
+        print('Okay...Goodbye')
+        exit()
+    # sourcery skip: merge-list-append, move-assign-in-block
 
 for _ in range(2):
     user_cards.append(deal_card())
@@ -64,3 +89,6 @@ while computer_score != 0 and computer_score < 17:
 print(f"  Your final hand {user_cards}, final score: {user_score}")
 print(f"  Computers final hand: {computer_cards}, final score: {computer_score}")
 print(compare(user_score, computer_score))
+replay_game()
+
+mainloop()
