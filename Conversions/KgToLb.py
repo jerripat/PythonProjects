@@ -2,57 +2,45 @@ from ast import Expr
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
+from PIL import ImageTk, Image
 
 from formulas import Formula
 
-temp = 0.0
+mk = 0.0
 tk = Tk()
 tk.title("Conversion Calculator")
 tk.geometry("450x400")
 tk.configure(background="#06185c")
 
-fm = Formula(temp)
+fm = Formula(mk)
+# frame = Frame(tk, width=20, height=20)
+# frame.pack()
+# frame.place(anchor="nw", relx=0.5, rely=0.5)
+screen_frame = Frame(tk, width=200, height=200, bg="#735303")
+screen_frame.grid(column=0, row=0)
+
+img = ImageTk.PhotoImage(Image.open("images/scale.png"))
+img_label = Label(screen_frame, image=img)
+img_label.grid(column=0, row=2)
 
 
 def radio():
     if radioVar.get() == 0:
-        callFtoC(e.get())
+        callLbToKg(e.get())
     else:
-        callCtoF(e.get())
+        callKgToLb(e.get())
 
 
-def callFtoC(temp):
+def callLbToKg(mk):
     num = 0
-    num = temp
+    num = mk
 
     if num.isdigit():
-        convert = fm.FtoC(int(num))
-        convert = " %.2f" % convert
-        display_label = Label(
-            tk,
-            text=f"The converion from {num}{chr(176)} Farenhight is : {convert}{chr(176)} Centigrade",
-            bg="#06185c",
-            fg="yellow",
-        )
-    else:
-        messagebox.showerror("Error", "Please enter a valid number")
-    messagebox.showinfo(
-        "Conversion",
-        f"The converion from {num}{chr(176)} Farenhight is: {convert}{chr(176)} Centigrade",
-    )
-
-    display_label.pack(pady=10)
-
-
-def callCtoF(temp):
-    num = 0
-    num = temp
-    if num.isdigit():
-        convert = fm.CtoF(int(num))
+        convert = fm.InchToMil(int(num))
         convert = "%.2f" % convert
         display_label = Label(
             tk,
-            text=f"The converion from {num}{chr(176)} Centigrade is {convert}{chr(176)} Farenhight",
+            text=f"The conversion from {num} Kilogram(s) to {convert} Pounds",
             bg="#06185c",
             fg="yellow",
         )
@@ -60,20 +48,41 @@ def callCtoF(temp):
         messagebox.showerror("Error", "Please enter a valid number")
 
     messagebox.showinfo(
-        "Conversion",
-        f"The converion from {temp}{chr(176)} Centigrade is {convert}{chr(176)} Farenhight",
+        "Conversion", f"The conversion from {num} Pound(s) to {convert} Kilogram(s)"
     )
 
-    display_label.pack(pady=10)
+    display_label.grid(column=2, row=1)
+
+
+def callKgToLb(mk):
+    num = 0
+    num = mk
+    if num.isdigit():
+        convert = fm.MtoI(int(num))
+        convert = "%.2f" % convert
+        display_label = Label(
+            tk,
+            text=f"The conversion from {num} Pound(s) {convert} Kilogram(s)",
+            bg="#06185c",
+            fg="yellow",
+        )
+    else:
+        messagebox.showerror("Error", "Please enter a valid number")
+
+    messagebox.showinfo(
+        "Conversion", f"The conversion from {num} Pounds(s) to {convert} Kilogram(s)"
+    )
+
+    display_label.grid(column=2, row=1)
 
 
 e1_label = Label(
     tk,
-    text="Select conversion",
+    text="Select Conversion",
     bg="#06185c",
     fg="yellow",
     font=("Helvetica", 16),
-).pack(pady=10)
+).grid(column=1, row=2)
 
 
 radioVar = IntVar()
@@ -81,30 +90,30 @@ radioVar = IntVar()
 rbutton1 = Radiobutton(
     tk,
     selectcolor="#06185c",
-    text=" Farenheigt to Centigrade ",
+    text="  Pounds(s) to Kilogram(s)  ",
     variable=radioVar,
     value=0,
     bg="#06185c",
     fg="yellow",
-).pack(pady=2)
+).grid(column=1, row=3)
 
 rbutton2 = Radiobutton(
     tk,
-    text=" Centigrade to Farenheigt ",
+    text="  Kilogram(s) to Pound(s)  ",
     variable=radioVar,
     value=1,
     bg="#06185c",
     fg="yellow",
     selectcolor="#06185c",
-).pack(pady=4)
+).grid(column=1, row=4)
 
-e = Entry(tk, text="Select Converion Type", font=("Helvetica", 14))
-e.pack(pady=10)
+e = Entry(tk, text="Select Converion", font=("Helvetica", 12))
+e.grid(column=1, row=5)
 e.focus_set()
 
 temp = e.get()
 
-radButton = Button(tk, text="Convert", command=radio).pack(pady=10)
+radButton = Button(tk, text="Convert", command=radio).grid(column=1, row=8)
 
 my_menu = Menu(tk)
 tk.config(menu=my_menu)

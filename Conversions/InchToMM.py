@@ -2,6 +2,7 @@ from ast import Expr
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
+from PIL import ImageTk, Image
 
 from formulas import Formula
 
@@ -12,21 +13,30 @@ tk.geometry("450x400")
 tk.configure(background="#06185c")
 
 fm = Formula(mk)
+# frame = Frame(tk, width=20, height=20)
+# frame.pack()
+# frame.place(anchor="nw", relx=0.5, rely=0.5)
+screen_frame = Frame(tk, width=200, height=200, bg="#735303")
+screen_frame.grid(column=0, row=0)
+
+img = ImageTk.PhotoImage(Image.open("images/scale.png"))
+img_label = Label(screen_frame, image=img)
+img_label.grid(column=0, row=2)
 
 
 def radio():
     if radioVar.get() == 0:
-        callItoM(e.get())
+        callInchToMil(e.get())
     else:
-        callMtoI(e.get())
+        callMilToInch(e.get())
 
 
-def callItoM(mk):
+def callInchToMil(mk):
     num = 0
     num = mk
 
     if num.isdigit():
-        convert = fm.ItoM(int(num))
+        convert = fm.InchToMil(int(num))
         convert = "%.2f" % convert
         display_label = Label(
             tk,
@@ -37,14 +47,14 @@ def callItoM(mk):
     else:
         messagebox.showerror("Error", "Please enter a valid number")
 
-    messagebox.showinfo("Conversion",
-        f"The conversion from {num} inch(s) to {convert} milimeters"
+    messagebox.showinfo(
+        "Conversion", f"The conversion from {num} inch(s) to {convert} milimeters"
     )
 
-    display_label.pack(pady=10)
+    display_label.grid(column=2, row=1)
 
 
-def callMtoI(mk):
+def callMilToInch(mk):
     num = 0
     num = mk
     if num.isdigit():
@@ -59,20 +69,20 @@ def callMtoI(mk):
     else:
         messagebox.showerror("Error", "Please enter a valid number")
 
-    messagebox.showinfo("Conversion",
-            f"The conversion from {num} milimeter(s) to {convert} inch(s)"
+    messagebox.showinfo(
+        "Conversion", f"The conversion from {num} milimeter(s) to {convert} inch(s)"
     )
 
-    display_label.pack(pady=10)
+    display_label.grid(column=2, row=1)
 
 
 e1_label = Label(
     tk,
-    text="Select conversion",
+    text="Select Conversion",
     bg="#06185c",
     fg="yellow",
     font=("Helvetica", 16),
-).pack(pady=10)
+).grid(column=1, row=2)
 
 
 radioVar = IntVar()
@@ -80,30 +90,30 @@ radioVar = IntVar()
 rbutton1 = Radiobutton(
     tk,
     selectcolor="#06185c",
-    text=" Inch(s) to Milimeter(s) ",
+    text="  Inch(s) to Milimeter(s)  ",
     variable=radioVar,
     value=0,
     bg="#06185c",
     fg="yellow",
-).pack(pady=2)
+).grid(column=1, row=3)
 
 rbutton2 = Radiobutton(
     tk,
-    text=" milimeter(s) to inch(s) ",
+    text="  Milimeter(s) to Inch(s)  ",
     variable=radioVar,
     value=1,
     bg="#06185c",
     fg="yellow",
     selectcolor="#06185c",
-).pack(pady=4)
+).grid(column=1, row=4)
 
-e = Entry(tk, text="Select Converion Type", font=("Helvetica", 14))
-e.pack(pady=10)
+e = Entry(tk, text="Select Converion", font=("Helvetica", 12))
+e.grid(column=1, row=5)
 e.focus_set()
 
 temp = e.get()
 
-radButton = Button(tk, text="Convert", command=radio).pack(pady=10)
+radButton = Button(tk, text="Convert", command=radio).grid(column=1, row=8)
 
 my_menu = Menu(tk)
 tk.config(menu=my_menu)
