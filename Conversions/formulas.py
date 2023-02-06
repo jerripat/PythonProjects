@@ -31,9 +31,9 @@ class Formula:
         return mk * 25.4
 
     # Meters to Inch
-    def MtoI(self, mk):
+    def MtoI(self,mk):
         # 1 mm = 0.03937007874 in 3/64
-        return mk * 0.03937007874
+        return self.mk * 0.03937007874
 
     # Centimeters to Inch
     def CentToInch(self, mk):
@@ -75,10 +75,14 @@ class Formula:
 
 class BMICalc:
 
+    weight = 0
+    inch = 0
+    feet = 0
 
     def __init__(self):
-        self.wt = 0.00
-        self.ht = 0.00
+        self.wt = 0
+        self.ht = 0
+        self.ht2 = 0
 
     def BMI(self, wt, ht, ht2):
 
@@ -87,3 +91,13 @@ class BMICalc:
         self.ht2 = ht2/0.0453595
 
         return (self.wt / self.ht**2) * 703
+
+    def convertWeight(self, wt):
+        # sourcery skip: inline-immediately-returned-variable
+        self.weight = (float(wt) / 0.453592)
+        return self.weight
+
+    def convertHeight(self, ht, ht2):
+        self.feet = ht * 0.0453595
+        self.inch = ht2 * 25.4
+        return self.feet + self.inch
