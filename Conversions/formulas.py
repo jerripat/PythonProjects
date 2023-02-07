@@ -93,11 +93,18 @@ class BMICalc:
         return (self.wt / self.ht**2) * 703
 
     def convertWeight(self, wt):
-        # sourcery skip: inline-immediately-returned-variable
-        self.weight = (float(wt) / 0.453592)
+        # sConverts pounds to kilograma
+        self.weight = (float(wt) * 0.453592)
         return self.weight
 
     def convertHeight(self, ht, ht2):
-        self.feet = ht * 0.0453595
-        self.inch = ht2 * 25.4
-        return self.feet + self.inch
+        # convert height to meters
+        self.feet = ht * 0.3048
+        self.inch = ht2 * 0.0254
+        # Convert meters to feet
+        combine = ((self.feet + self.inch) / 0.3048 )
+        combine = "%.2f" % combine
+        print(f'Height is: {combine} ' )#feet and {self.inch} inches')
+        return combine
+
+    
