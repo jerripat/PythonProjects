@@ -2,30 +2,42 @@
 
 from ast import Expr
 from tkinter import *
+import tkinter as tk
 from tkinter import messagebox
-from tkinter import ttk
 from PIL import ImageTk, Image
 
 from formulas import Formula
 
+
+def hello():
+    messagebox.showinfo("Conversions", "Hello World")
+
+
 mk = 0.0
-tk = Tk()
-tk.title("Conversion Calculator")
-tk.geometry("450x450")
-tk.configure(background="#06185c")
+mainwindow = tk.Tk()
+mainwindow.title("Conversion Calculator")
+mainwindow.geometry("500x450")
+mainwindow.configure(background="#084722")
 
-# fm = Formula(mk)
-frame = Frame(tk, width=200, height=150)
-frame.pack()
-frame.place(anchor="center", relx=0.5, rely=0.5)
+img = ImageTk.PhotoImage(Image.open("images/ubuntu-icon.png"))
+img_label = Label(mainwindow, image=img)
+img_label.grid(columnspan=3, row=2)
 
-menu_frame = Frame(tk,width=100,height=100,bg='#735303')
-menu_frame.pack(pady=100,padx=10)
+menubar = tk.Menu(mainwindow)
+sub_menu = Menu(menubar, tearoff=0)
+sub_menu.add_command()
 
-img = ImageTk.PhotoImage(Image.open("images/Kali2.jpg"))
-img_label = Label(frame, image=img)
-img_label.pack()
+# sub_sub_menu = Menu(sub_menu, tearoff=0)
+# sub_sub_menu.add_command(label="SAE to Metric")
+# sub_sub_menu.add_command(label="Metric to SAE")
 
-fr_label = Label(menu_frame,text=' Conversion Menu ').pack(pady=10)
+# #menubar.add_cascade(label="Conversions", menu=sub_menu)
+# sub_menu.add_command(label="Exit", command=mainwindow.destroy)
 
-tk.mainloop()
+menubar.add_cascade(label="File", menu=sub_menu)
+menubar.add_cascade(label="Conversions")
+#sub_menu.add_cascade(label="Metrics",sub_menu=sub_sub_menu)
+
+mainwindow.config(menu=menubar)
+
+mainwindow.mainloop()
