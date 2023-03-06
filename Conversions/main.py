@@ -21,22 +21,21 @@ mainwindow.configure(background="#084722")
 
 img = ImageTk.PhotoImage(Image.open("images/ubuntu-icon.png"))
 img_label = Label(mainwindow, image=img)
-img_label.grid(columnspan=3, row=2)
+img_label.grid(column=5, row=0, columnspan=2, rowspan=2, padx=5, pady=5)
 
 menubar = tk.Menu(mainwindow)
+
 sub_menu = Menu(menubar, tearoff=0)
-sub_menu.add_command()
+sub_menu.add_command(label="Exit", command=mainwindow.destroy)
 
-# sub_sub_menu = Menu(sub_menu, tearoff=0)
-# sub_sub_menu.add_command(label="SAE to Metric")
-# sub_sub_menu.add_command(label="Metric to SAE")
-
-# #menubar.add_cascade(label="Conversions", menu=sub_menu)
-# sub_menu.add_command(label="Exit", command=mainwindow.destroy)
+con_menu = Menu(menubar, tearoff=0)
+con_menu.add_command(label="SAE to Metric")
+con_menu.add_command(label="Metric to SAE")
+con_menu.add_command(label="Ft to Met")
+con_menu.add_command(label="Met to Ft")
 
 menubar.add_cascade(label="File", menu=sub_menu)
-menubar.add_cascade(label="Conversions")
-#sub_menu.add_cascade(label="Metrics",sub_menu=sub_sub_menu)
+menubar.add_cascade(label="Conversions", menu=con_menu)
 
 mainwindow.config(menu=menubar)
 
