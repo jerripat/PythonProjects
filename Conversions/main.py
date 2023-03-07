@@ -29,10 +29,11 @@ sub_menu = Menu(menubar, tearoff=0)
 sub_menu.add_command(label="Exit", command=mainwindow.destroy)
 
 con_menu = Menu(menubar, tearoff=0)
-con_menu.add_command(label="SAE to Metric")
-con_menu.add_command(label="Metric to SAE")
-con_menu.add_command(label="Ft to Met")
-con_menu.add_command(label="Met to Ft")
+con_menu.add_command(label="Metric")
+sub_con_menu= Menu(con_menu, tearoff=0)
+
+sub_con_menu.add_cascade(label="Ft to Met", menu=con_menu)
+#sub_con_menu.add_command(label="Met to Ft",menu=con_menu)
 
 menubar.add_cascade(label="File", menu=sub_menu)
 menubar.add_cascade(label="Conversions", menu=con_menu)
