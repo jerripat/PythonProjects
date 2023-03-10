@@ -18,25 +18,21 @@ class Window:
         filemenu.add_command(label="Load", command=self.func)
         filemenu.add_command(label="Exit", command=self.closeMe)
 
-        exportmenu = tk.Menu(mainframe, tearoff=0)
-        exportmenu.add_command(label="Export as PDF", command=self.func)
-        exportmenu.add_command(label="Export as PNG", command=self.func)
-        exportmenu.add_command(label="Export as SVG", command=self.func)
-
         conmenu = tk.Menu(mainframe, tearoff=0)
-        conmenu.add_command(label="Metric to Imperial", command=self.closeMe)
-        conmenu.add_command(label="Imperial to Metric", command=self.func)
-        conmenu.add_command(label="Something else", command=self.func)
+        conmenu.add_command(label="Metric", command=self.closeMe)
 
-        sub_con_menu = tk.Menu(conmenu, tearoff=0)
-        sub_con_menu.add_command(label="Export as PDF", command=self.func)
+        sub_con_menu = tk.Menu(conmenu, tearoff=0,bg='#054229')
+        #sub_con_menu.add_cascade(label="Metric to Imperial", sub_con_menu=conmenu)
+
+        sub_con_menu.add_command(label="Metric to Imperial", command=self.func)
         sub_con_menu.add_command(label="Export as PNG", command=self.func)
         sub_con_menu.add_command(label="Export as SVG", command=self.func)
 
+        conmenu.add_command(label="Imperial", command=self.func)
+        conmenu.add_command(label="Something else", command=self.func)
 
         mainmenu.add_cascade(label="File", menu=filemenu)
         mainmenu.add_cascade(label="Conversions", menu=conmenu)
-        conmenu.add_cascade(label="Metric to Imperial", menu=sub_con_menu)
 
     def func(self):
         print("This is a empty function")
