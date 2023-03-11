@@ -1,44 +1,40 @@
 from tkinter import *
-from tkinter import ttk
+import tkinter as tk
 from tkinter import messagebox
-from tkinter import filedialog
 from PIL import Image, ImageTk
-import os
-import sys
 
-root = Tk()
-root.title("Menus")
-root.geometry("400x400")
-root.resizable(False, False)
+my_win = tk.Tk()
+my_win.title("Menus")
+my_win.geometry("400x400")
+
 
 # Define a Menu
-rootMenu = Menu(root)
-root.config(menu=rootMenu,bg="#084722")
-
-def openFile():
+def my_fun():
     pass
 
-def saveFile():
-    pass
+menubar = tk.Menu(my_win)
+# tk.config(menu=menubar)
 
 def closeMe():
-        messagebox.showinfo("Close", "Are you sure you want to quit?")
-        root.destroy()
+    messagebox.showinfo("Close", "Are you sure you want to quit?")
+    my_win.destroy()
+
 
 # Create Menu Items
-fileMenu = Menu(rootMenu, tearoff=0)
-rootMenu.add_cascade(label="File", menu=fileMenu)
-fileMenu.add_command(label="Open", command=openFile)
-fileMenu.add_command(label="Save", command=saveFile)
-fileMenu.add_separator()
-fileMenu.add_command(label="Exit", command=closeMe)
+menu_file = Menu(menubar, tearoff=0)  # file menu
+menu_edit = Menu(menubar, tearoff=0, bg='yellow',font=('Hack',12))  # edit menu
 
-conMenu = Menu(rootMenu, tearoff=0)
-rootMenu.add_cascade(label="Conversion", menu=conMenu)
-conMenu.add_command(label="Temperature", command=fileMenu)
-conMenu.add_command(label="Distance", command=openFile)
-conMenu.add_command(label="Met to SAE", command=saveFile)
+menubar.add_cascade(label="File", menu=menu_file)  # top line
+menubar.add_cascade(label="Edit", menu=menu_edit)  # top line
 
+menu_file.add_command(label="New", command=my_fun)
+menu_file.add_command(label="Open", command=my_fun)
+menu_file.add_command(label="Save as...", command=my_fun)
+menu_file.add_separator()
+menu_file.add_command(label="Exit", command=closeMe)
 
+menu_edit.add_command(label="Undo", command=my_fun)
+menu_edit.add_command(label="Redo", command=my_fun)
 
-root.mainloop()
+my_win.config(menu=menubar)
+my_win.mainloop()
