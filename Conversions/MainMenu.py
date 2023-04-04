@@ -16,13 +16,20 @@ menubar = tk.Menu(my_win)
 # tk.config(menu=menubar)
 
 def closeMe():
-    messagebox.showinfo("Close", "Are you sure you want to quit?")
+    #messagebox.showinfo("Close", "Are you sure you want to quit?")
     my_win.destroy()
+
+def Change_Color(color):
+    color = "green" if color == "red" else "red"
+    menu_file.config(fg=color)
+    my_win.after(1000, Change_Color, color)
+
 
 
 # Create Menu Items
-menu_file = Menu(menubar, tearoff=0)  # file menu
-menu_edit = Menu(menubar, tearoff=0, bg='yellow',font=('Hack',12))  # edit menu
+menu_file = Menu(menubar, tearoff=0, postcommand=lambda:Change_Color('red'))  # file menu
+menu_edit = Menu(menubar, tearoff=0, bg='yellow',
+                 font=('Hack',10),activebackground='green')  # edit menu
 
 menubar.add_cascade(label="File", menu=menu_file)  # top line
 menubar.add_cascade(label="Edit", menu=menu_edit)  # top line
