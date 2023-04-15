@@ -17,7 +17,9 @@ class ohms_law():
 
     def get_resistor(self, i, v):
         return v/i
+
     def get_current(self, r, v):
         return v/r
+    
     def get_voltage(self, i, r):
         i * r

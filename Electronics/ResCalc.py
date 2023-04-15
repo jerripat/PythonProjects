@@ -1,86 +1,88 @@
 from tkinter import *
 from tkinter import messagebox
-from PIL import Image, ImageTk
+
+# from PIL import Image, ImageTk
 from formulas import Formula as fm
+from Elec_formulas import ohms_law as om
 
 tk = Tk()
 tk.title("Resistor Conversion")
-tk.geometry("400x400")
-tk.configure(background="#239943")
+tk.geometry("500x500")
+tk.configure(background="#1E194A")
 
-
-def convert(ty, val):
-    # sourcery skip: merge-comparisons, merge-duplicate-blocks, remove-redundant-if
-    i = 10
-    v = 20
-    global r, a, o, c
-    match ty:
-        case "v":
-            v1 = int(val)
-            val = v1 / i
-            l1 = Label(tk, text=f"Resistor: {val} ", font=("Arial", 12)).pack(pady=5)
-        case "i":
-            i1 = int(val)
-            l1 = Label(tk, text=ty, font=("Arial", 12)).pack()
-        case "r":
-            r1 = int(val) / i
-            l1 = Label(tk, text=r1, font=("Arial", 12)).pack(pady=10)
-
-    return val
+backcolo = "#1E194A"
+fgcolo = "yellow"
 
 
 def radio():
     match res.get():
         case 1:
-            r = Label(tk, text="Resistor", font=("Arial", 12)).pack()
+            r = Label(tk, text="Resistor", bg=backcolo, font=("Arial", 12)).grid()
+            messagebox.showinfo(
+                title="Resistor Conversion", message="Please enter the resistor value"
+            )
         case 2:
-            a = Label(tk, text="Ampere", font=("Arial", 12)).pack()
+            a = Label(tk, text="Ampere/Current", bg=backcolo, font=("Arial", 12)).grid()
         case 3:
-            o = Label(tk, text="Ohm", font=("Arial", 12)).pack()
+            o = Label(tk, text="Ohm", bg=backcolo, font=("Arial", 12)).grid()
         case 4:
-            c = Label(tk, text="Current", font=("Arial", 12)).pack()
-
-
-def hide():
-    r.pack_forget()
-
-
-def show():
-    r.pack(pady=10)
+            c = Label(tk, text="Current", bg=backcolo, font=("Arial", 12)).grid()
 
 
 res = IntVar()
 ty = StringVar()
 
-Label(tk, text="Select Calculation").pack()
+fr_1 = Frame(tk, width=400, height=400, bd=1, bg="#766bb3", relief="sunken")
+fr_1.grid(columnspan=4, row=4)
 
-fr_1 = Frame(tk, width=200, height=200, bd=1, bg="teal", relief="sunken")
-fr_1.pack(padx=20, pady=10)
+rbutton_1 = Radiobutton(
+    fr_1, text="  Resistor", width=10, bg=backcolo, fg="#a8b36b", variable=res, value=1
+).pack()
+rbutton_2 = Radiobutton(
+    fr_1, text="  Ampere", width=10, bg=backcolo, fg="#a8b36b", variable=res, value=2
+).pack()
+rbutton_3 = Radiobutton(
+    fr_1, text="  Ohm     ", width=10, bg=backcolo, fg="#a8b36b", variable=res, value=3
+).pack()
+rbutton_4 = Radiobutton(
+    fr_1, text="  Current ", width=10, bg=backcolo, fg="#a8b36b", variable=res, value=4
+).pack()
 
-rbutton_1 = Radiobutton(tk, text="Resistor", variable=res, value=1)
-rbutton_1.pack(padx=10)
-rbutton_2 = Radiobutton(tk, text="Ampere", variable=res, value=2)
-rbutton_2.pack()
-rbutton_3 = Radiobutton(tk, text="Ohm     ", variable=res, value=3)
-rbutton_3.pack()
-rbutton_4 = Radiobutton(tk, text="Current", variable=res, value=4)
-rbutton_4.pack()
+# ------------------------------------
+v_label = Label(tk, text="Volt", bg=backcolo, fg=fgcolo, font=("Helvetica", 14)).grid(
+    column=0, row=6
+)
+
+volt = Entry(tk, width=10, text="Insert Value", font=("Helvetica", 14)).grid(
+    column=0, row=7
+)
+# ------------------------------------
+
+i_label = Label(
+    tk, text="Current", bg=backcolo, fg=fgcolo, font=("Helvetica", 14)
+).grid(column=1, row=6)
+
+current = Entry(tk, width=10, text="Insert Value", font=("Helvetica", 14)).grid(
+    column=1, row=7
+)
+# ------------------------------------
 
 
-val = Entry(tk, width=10, text="Insert Value", font=("Helvetica", 14))
-val.pack()
+r_label = Label(
+    tk, text="Resistor", bg=backcolo, fg=fgcolo, font=("Helvetica", 14)
+).grid(column=2, row=6)
 
-b1 = Button(tk, text="Convert", command=radio).pack(pady=10)
+res = Entry(tk, width=10, text="Insert Value", font=("Helvetica", 14)).grid(
+    column=2, row=7
+)
+# ------------------------------------
+
+filler_label = Label(
+    tk, text=" ", bg=backcolo, fg="yellow", font=("Helvetica", 20)
+).grid(columnspan=4, row=8)
 
 
-stat = Label(
-    tk,
-    text="Waiting...",
-    relief="sunken",
-    width=50,
-    bg="#766bb3",
-    fg="#a8b36b",
-    font=("Arial", 12),
-).pack(pady=50)
+b1 = Button(tk, text="Convert", command=radio).grid(column=1, row=9)
 
+Label(tk, text=" Waiting...      ", bg=backcolo, fg="yellow", font=("Helvetica", )).grid(columnspan=4,row=20)
 tk.mainloop()
