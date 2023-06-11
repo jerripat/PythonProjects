@@ -1,0 +1,47 @@
+ 
+George Washington (1789-1797), Vice Presidents: John Adams
+John Adams (1797-1801), Vice President: Thomas Jefferson
+Thomas Jefferson (1801-1809), Vice Presidents: Aaron Burr (1801-1805), George Clinton (1805-1809)
+James Madison (1809-1817), Vice Presidents: George Clinton (1809-1812), Elbridge Gerry (1813-1814), None (1814-1817)
+James Monroe (1817-1825), Vice President: Daniel D. Tompkins
+John Quincy Adams (1825-1829), Vice President: John C. Calhoun
+Andrew Jackson (1829-1837), Vice Presidents: John C. Calhoun (1829-1832), None (1832-1833), Martin Van Buren (1833-1837)
+Martin Van Buren (1837-1841), Vice President: Richard M. Johnson
+William Henry Harrison (1841), Vice President: John Tyler
+John Tyler (1841-1845), No Vice President
+James K. Polk (1845-1849), Vice President: George M. Dallas
+Zachary Taylor (1849-1850), Vice President: Millard Fillmore
+Millard Fillmore (1850-1853), No Vice President
+Franklin Pierce (1853-1857), Vice President: William R. King (1853), None (1853-1857)
+James Buchanan (1857-1861), Vice President: John C. Breckinridge
+Abraham Lincoln (1861-1865), Vice Presidents: Hannibal Hamlin (1861-1865), Andrew Johnson (1865)
+Andrew Johnson (1865-1869), No Vice President
+Ulysses S. Grant (1869-1877), Vice Presidents: Schuyler Colfax (1869-1873), Henry Wilson (1873-1875), None (1875-1877)
+Rutherford B. Hayes (1877-1881), Vice President: William A. Wheeler
+James A. Garfield (1881), Vice President: Chester A. Arthur
+Chester A. Arthur (1881-1885), No Vice President
+Grover Cleveland (1885-1889), Vice President: Thomas A. Hendricks (1885), None (1885-1889)
+Benjamin Harrison (1889-1893), Vice President: Levi P. Morton
+Grover Cleveland (1893-1897), Vice President: Adlai E. Stevenson
+William McKinley (1897-1901), Vice Presidents: Garret Hobart (1897-1899), None (1899-1901), Theodore Roosevelt (1901)
+Theodore Roosevelt (1901-1909), Vice Presidents: None (1901-1905), Charles W. Fairbanks (1905-1909)
+William Howard Taft (1909-1913), Vice President: James S. Sherman (1909-1912), None (1912-1913)
+Woodrow Wilson (1913-1921), Vice Presidents: Thomas R. Marshall
+Warren G. Harding (1921-1923), Vice President: Calvin Coolidge
+Calvin Coolidge (1923-1929), Vice Presidents: None (1923-1925), Charles G. Dawes (1925-1929)
+Herbert Hoover (1929-1933), Vice President: Charles Curtis
+Franklin D. Roosevelt (1933-1945), Vice Presidents: John N. Garner (1933-1941), Henry A. Wallace (1941-1945), Harry S. Truman (1945)
+Harry S. Truman (1945-1953), Vice Presidents: None (1945-1949), Alben W. Barkley (1949-1953)
+Dwight D. Eisenhower (1953-1961), Vice President: Richard Nixon
+John F. Kennedy (1961-1963), Vice President: Lyndon B. Johnson
+Lyndon B. Johnson (1963-1969), Vice Presidents: None (1963-1965), Hubert Humphrey (1965-1969)
+Richard Nixon (1969-1974), Vice Presidents: Spiro T. Agnew (1969-1973), None (1973), Gerald Ford (1973-1974)
+Gerald Ford (1974-1977), Vice Presidents: None (1974), Nelson Rockefeller (1974-1977)
+Jimmy Carter (1977-1981), Vice President: Walter Mondale
+Ronald Reagan (1981-1989), Vice President: George H. W. Bush
+George H. W. Bush (1989-1993), Vice President: Dan Quayle
+Bill Clinton (1993-2001), Vice President: Al Gore
+George W. Bush (2001-2009), Vice President: Dick Cheney
+Barack Obama (2009-2017), Vice President: Joe Biden
+Donald Trump (2017-2021), Vice President: Mike Pence
+Joe Biden (2021-present as of last training cut-off in Sept 2021), Vice President: Kamala Harris

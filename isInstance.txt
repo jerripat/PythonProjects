@@ -1,0 +1,21 @@
+ 
+>>> x = 12
+>>> isinstance(x, int)
+True
+>>> y = 12.0
+>>> isinstance(y, float)
+True
+So:
+
+>>> if isinstance(x, int):
+        print('x is a int!')
+
+x is a int!
+In case of long integers, the above won't work. So you need to do:
+
+>>> x = 12L
+>>> import numbers
+>>> isinstance(x, numbers.Integral)
+True
+>>> isinstance(x, int)
+False
