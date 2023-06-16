@@ -1,0 +1,1 @@
+find ~/PythonProjects -type d -exec sudo chmod 755 {} \;     
