@@ -6,8 +6,8 @@ import json
 tk = Tk()
 
 tk.title("My Portfolio")
-tk.geometry("500x500")
-tk.config(bg="teal")
+tk.geometry("750x500")
+tk.config(bg="#08215e")
 
 
 def my_portfolio():
@@ -16,53 +16,73 @@ def my_portfolio():
     )
     api = json.loads(api_request.content)
 
+    coins = [
+        {"symbol": "BTC", "amount_owned": 2, "pri_per_coin": 3200},
+        {"symbol": "ETH", "amount_owned": 2, "pri_per_coin": 3200},
+        {"symbol": "LTC", "amount_owned": 20, "pri_per_coin": 320},
+    ]
 
-coins = [
-    {"symbol": "BTC", "amount_owned": 2, "pri_per_coin": 3200},
-    {"symbol": "ETH", "amount_owned": 2, "pri_per_coin": 3200},
-    {"symbol": "LTC", "amount_owned": 20, "pri_per_coin": 320},
-]
+    for coin in coins:
+        if api["data"][i]["symbol"] == coin["symbol"]:
+            total_paid = coin["amount_owned"] * coin["price_per_coin"]
+            current_value = (
+                coin["amount_owned"] * api["data"][i]["quote"]["USD"]["price"]
+            )
+            pl_percoin = (
+                api["data"][i]["quote"]["USD"]["price"] - coin["price_per_coin"]
+            )
+            total_pl_coin = pl_percoin * coin["amount_owned"]
 
-for coin in coins:
-    if api["data"][i]["symbol"] == coin["symbol"]:
-        total_paid = coin["amount_owned"] * coin["price_per_coin"]
-        current_value = coin["amount_owned"] * api["data"][i]["quote"]["USD"]["price"]
-        pl_percoin = api["data"][i]["quote"]["USD"]["price"] - coin["price_per_coin"]
-        total_pl_coin = pl_percoin * coin["amount_owned"]
+            total_pl = total_pl + total_pl_coin
 
-        total_pl = total_pl + total_pl_coin
+        #     print(api["data"][i]["name"] + " - " + api["data"][i]["symbol"])
+        #     print("Price - ${0:.2f}".format(api["data"][i]["quote"]["USD"]["price"]))
+        #     print("Number Of Coin:", coin["amount_owned"])
+        #     print("Total Amount Paid:", "$0:.2f".format(total_paid))
+        #     print("Current Value:", "$0:.2f".format(current_value))
+        #     print("P/L Per Coin:", "${0:.2f}".format(pl_percoin))
+        #     print("Total P/L with coin:", "$0:.2f".format(total_pl_coin))
+        #     print("--------------------")
 
-        print(api["data"][i]["name"] + " - " + api["data"][i]["symbol"])
-        print("Price - ${0:.2f}".format(api["data"][i]["quote"]["USD"]["price"]))
-        print("Number Of Coin:", coin["amount_owned"])
-        print("Total Amount Paid:", "$0:.2f".format(total_paid))
-        print("Current Value:", "$0:.2f".format(current_value))
-        print("P/L Per Coin:", "${0:.2f}".format(pl_percoin))
-        print("Total P/L with coin:", "$0:.2f".format(total_pl_coin))
-        print("--------------------")
+        # print("Total P/L for Portfolio:", "$0:.2f".format(total_pl))
 
-    print("Total P/L for Portfolio:", "$0:.2f".format(total_pl))
 
-name = Label(tk, text="Bitcoin", bg="teal", fg="yellow")
-name.grid(row=0, column=0, columnspan=3)
+name = Label(tk, text="Bitcoin |", bg="#08215e", fg="yellow", font=("Arial", 12))
+name.grid(row=0, column=0, sticky=N + S + E + W)
 
-price = Label(tk, text="Price", bg="teal", fg="yellow")
-price.grid(row=0, columnn=1, columnspan=3)
+br = Label(
+    tk,
+    text="--------------------------------------------------------------------------------------------------------------------------------------------------",
+    bg="#08215e",
+    fg="yellow",
+)
+br.grid(rowspan=10, columnspan=10)
 
-no_coins = Label(tk, text="Coins Owned", bg="teal", fg="yellow")
-no_coins.grid(row=0, column=2, columnspan=3)
+price = Label(tk, text="Price |", bg="#08215e", fg="yellow", font=("Arial", 12))
+price.grid(row=0, column=1, sticky=N + S + E + W)
 
-amount_paid = Label(tk, text="Total Amount Paid", bg="teal", fg="yellow")
-amount_paid.grid(row=0, column=3, columnspan=3)
+no_coins = Label(
+    tk, text="Coins Owned |", bg="#08215e", fg="yellow", font=("Arial", 14)
+)
+no_coins.grid(row=0, column=2, sticky=N + S + E + W)
 
-current_val = Label(tk, text="Current Value", bg="teal", fg="yellow")
-current_val.grid(row=0, column=4, columnspan=3)
+amount_paid = Label(
+    tk, text="Total Paid |", bg="#08215e", fg="yellow", font=("Arial", 14)
+)
+amount_paid.grid(row=0, column=3, sticky=N + S + E + W)
 
-pl_coin = Label(tk, text="P/L Per Coin", bg="teal", fg="yellow")
-pl_coin.grid(row=0, column=5, columnspan=3)
+current_val = Label(
+    tk, text="Current Value |", bg="#08215e", fg="yellow", font=("Arial", 14)
+)
+current_val.grid(row=0, column=4, sticky=N + S + E + W)
 
-total_pl = Label(tk, text="Total P/L", bg="teal", fg="yellow")
-totalpl.grid(row=0, column=6, columnspan=3)
+pl_coin = Label(
+    tk, text="P/L Per Coin |", bg="#08215e", fg="yellow", font=("Arial", 14)
+)
+pl_coin.grid(row=0, column=5, sticky=N + S + E + W)
+
+total_pl = Label(tk, text="Total P/L", bg="#08215e", fg="yellow", font=("Arial", 12))
+total_pl.grid(row=0, column=6, sticky=N + S + E + W)
 
 tk.mainloop()
 print("Program Completed")
