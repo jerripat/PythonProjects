@@ -47,37 +47,30 @@ def my_portfolio():
         # print("Total P/L for Portfolio:", "$0:.2f".format(total_pl))
 
 
-name = Label(tk, text="Bitcoin |", bg="#08215e", fg="yellow", font=("Arial", 12))
+name = Label(tk, text="Bitcoin ", bg="#08215e", fg="yellow", font=("Arial", 12))
 name.grid(row=0, column=0, sticky=N + S + E + W)
 
-br = Label(
-    tk,
-    text="--------------------------------------------------------------------------------------------------------------------------------------------------",
-    bg="#08215e",
-    fg="yellow",
-)
-br.grid(rowspan=10, columnspan=10)
 
-price = Label(tk, text="Price |", bg="#08215e", fg="yellow", font=("Arial", 12))
+price = Label(tk, text="Price ", bg="#08215e", fg="yellow", font=("Arial", 12))
 price.grid(row=0, column=1, sticky=N + S + E + W)
 
 no_coins = Label(
-    tk, text="Coins Owned |", bg="#08215e", fg="yellow", font=("Arial", 14)
+    tk, text="Coins Owned ", bg="#08215e", fg="yellow", font=("Arial", 12)
 )
 no_coins.grid(row=0, column=2, sticky=N + S + E + W)
 
 amount_paid = Label(
-    tk, text="Total Paid |", bg="#08215e", fg="yellow", font=("Arial", 14)
+    tk, text="Total Paid ", bg="#08215e", fg="yellow", font=("Arial", 12)
 )
 amount_paid.grid(row=0, column=3, sticky=N + S + E + W)
 
 current_val = Label(
-    tk, text="Current Value |", bg="#08215e", fg="yellow", font=("Arial", 14)
+    tk, text="Current Value ", bg="#08215e", fg="yellow", font=("Arial", 12)
 )
 current_val.grid(row=0, column=4, sticky=N + S + E + W)
 
 pl_coin = Label(
-    tk, text="P/L Per Coin |", bg="#08215e", fg="yellow", font=("Arial", 14)
+    tk, text="P/L Per Coin ", bg="#08215e", fg="yellow", font=("Arial", 12)
 )
 pl_coin.grid(row=0, column=5, sticky=N + S + E + W)
 
