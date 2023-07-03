@@ -55,12 +55,6 @@ menubar.add_command(label ='Option 2', command = show_option2)
 root.config(menu = menubar)
 root.mainloop()
 
-
-# def button_clicked():
-#     print("Button clicked")
-Sure, here's a simple example of a command line interface with menus and sub-menus using a Python script:
-
-```python
 def main_menu():
     while True:
         print("\nMain Menu:")
@@ -120,7 +114,5 @@ def sub_menu_2():
             
 if __name__ == "__main__":
     main_menu()
-```
 
-In this script, we have a `main_menu()` function that displays the main menu. When the user selects an option, it calls either `sub_menu_1()` or `sub_menu_2()`. In these sub-menu functions, the user can choose sub-options or return to the main menu. If the user chooses "Exit" in the main menu, the script will terminate. 
 mainwindow.mainloop()
