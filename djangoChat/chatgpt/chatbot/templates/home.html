@@ -1,29 +1,24 @@
-{% extends 'base.html' %}
-
-
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <div class="card">
-    <div class="card-header">
-      ChatBot Response
-    </div>
-    <div class="card-body">
-     <br><br>
-     <h2> This is a bot response </h2>
-    
-    </div>
+  <div class="card-header">ChatBot Response</div>
+  <div class="card-body">
+    <br /><br />
+    <h2>This is a bot response</h2>
+  </div>
+</div>
+
+<br /><br />
+<form>
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Ask ChatGPT a Question"
+    />
   </div>
 
-  <br><br>
-  <form>
-    <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Ask ChatGPT a Question">
-    </div>
-    
-   
-    <button type="submit" class="btn btn-outline-secondary btn-lg" >Submit</button>
-  </form> 
+  <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>
+</form>
 
 {% endblock %}
-
