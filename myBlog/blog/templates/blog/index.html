@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    My Blog
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<header id="main-navigation">
+    <h1><a href="">Jerri's Blog</a></h1>
+        <nav>
+            <a href="">All Posts</a>
+        </nav>
+</header>
+<section id="welcome">
+    <header>
+        <img src="" alt="Jerri - The author of this blog" />
+        <h2>Jerri's Blog</h2>
+    </header>
+    <p>Hi I'm Jerri and I like to blog about tech...</p>
+</section>
+<section id="latest-posts">
+    <h2>My latest thoughts</h2>
+    <ul>
+        <li>
+            <article class="post">
+                <a href="">
+                    <img src="" alt="Computers" />
+                    <div class="post__content">
+                        <h3>Mini Computers</h3>
+                        <p>Do they have the power...Are they worth the money?</p>
+                    </div>
+                </a>
+            </article>
+       </li>
+    </ul>
+</section>
+<section id="about">
+<h2>What I do!!</h2>
+<p>I love programming and the world of ioT</p>
+<p>My goal is to keep growing as a developer and If I can help you then I'm happy!</p>
+</section>
+
+{% endblock %}
