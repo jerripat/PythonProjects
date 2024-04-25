@@ -14,9 +14,12 @@
     <h2>{{ post.title }}</h2>
     <article>
        <img src="{% static "images/"|add:post.image_name %}" alt="{{ post.title }}" />
-        <address>{{ post.author }}</address>
+
+           <address>By <a href="mailto:jerripat@jerripatterson.com" style="color: white;">Jerri Patterson</a></address>
+
+
         <div>
-            Last updated on <time>{{ post.date|date:"d M Y" }}</time>
+           Last updated on <time>{{ post.date|date:"d M Y" }}</time>
         </div>
     </article>
 </section>
