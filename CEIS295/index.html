@@ -1,10 +1,16 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>{% block title %}CEIS295{%  endblock %}</title>
+    {% block css %}
+    {%  endblock %}
 </head>
 <body>
-$END$
-</body>
+{% block content %}
+
+<h1>Welcome to CEIS295!</h1>
+
+<p>This is a sample Django app for CEIS295.</p>
+{%  endblock %}
 </html>
